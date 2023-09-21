@@ -8,12 +8,12 @@ class UserM extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'users';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'users_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'email','password'];
+    protected $allowedFields    = ['username', 'email', 'password', 'users_status'];
 
     // Dates
     protected $useTimestamps = false;
@@ -43,5 +43,10 @@ class UserM extends Model
     public function index()
     {
         return $this->db->table('users')->select('*')->where(['row_status' => 1])->get()->getResult();
+    }
+
+    public function check_user()
+    {
+        return $this->db->table('users')->select('*')->where(['email' => 1])->get()->getResult();
     }
 }

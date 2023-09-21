@@ -7,8 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'AuthController::login');
 $routes->match(['get', 'post'], 'login', 'AuthController::login');
+$routes->match(['get', 'post'], '/do_login', 'AuthController::do_login');
 
 $routes->match(['get', 'post'], '/auth', 'DashboardC::index');
+
 $routes->match(['get', 'post'], '/all-tickets', 'DashboardC::all_tickets');
 
 $routes->group('admin', static function ($routes) {
